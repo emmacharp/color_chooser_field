@@ -98,12 +98,14 @@
 
 			$value = $data['value'];
 			$label = Widget::Label($this->get('label'));
-			$label->setAttribute('class', 'color-chooser');
+			$colorchooser = new XMLElement('div', null, array('class' => 'color-chooser'));
 			if( $this->get('required') != 'yes' ) $label->appendChild(new XMLElement('i', 'Optional'));
-			$label->appendChild(Widget::Input('fields'.$fieldnamePrefix.'['.$this->get('element_name').']'.$fieldnamePostfix, (strlen($value) != 0 ? $value : '#')));
 
 			if( $flagWithError != null ) $wrapper->appendChild(Widget::Error($label, $flagWithError));
 			else $wrapper->appendChild($label);
+
+			$colorchooser->appendChild(Widget::Input('fields'.$fieldnamePrefix.'['.$this->get('element_name').']'.$fieldnamePostfix, (strlen($value) != 0 ? $value : '#')));
+			$wrapper->appendChild($colorchooser);
 		}
 
 		public function displayDatasourceFilterPanel(XMLElement &$wrapper, $data = null, $errors = null, $fieldnamePrefix = null, $fieldnamePostfix = null){

@@ -47,7 +47,7 @@
 		
 		/*----Color chooser field----*/
 		//If page has a color chooser field, call the Farbtastic function
-		if($('label.color-chooser').length > 0){
+		if($('label.color-chooser, div.color-chooser').length > 0){
 			//Insert elements for Farbtastic to work with 
 			$('.color-chooser input').each (function() {
 				$(this).wrap('<div class="color-chooser-container"></div>');
@@ -62,13 +62,13 @@
 			})
 			// Link Farbtastic to the field in focus
 			.focus(function() {
-				$.farbtastic('#picker').linkTo(this);
+				$.farbtastic('#picker').linkTo($(this).add($(this).closest('.field')));
 			});
 			//jQuery Tools - Tooltip
 			$('.colorwell').tooltip({
 				effect: 	'fade',
 				position: 	'bottom left',
-				offset: 	[0, 166],
+				offset: 	[0, 188],
 				tip: 		'#picker-container'
 			}).dynamic( { 
 				top: { 

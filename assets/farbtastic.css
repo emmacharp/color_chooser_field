@@ -80,7 +80,8 @@
 	background-size: 100%;
 	display: block;
 	flex: none;
-	margin-right: 1rem;
+	position: absolute;
+	right: var(--standard-inner-rhythm);
 }
 
 #picker-container.top {
